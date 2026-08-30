@@ -1,4 +1,12 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
 import { User } from '../users/user.entity.js';
 import { Property } from '../properties/property.entity.js';
 
@@ -7,19 +15,19 @@ export class Review {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'int' })
   rating: number;
 
-  @Column()
+  @Column({ type: 'text' })
   comment: string;
 
-  @Column()
+  @CreateDateColumn()
   createdAt: Date;
 
-  @Column()
+  @Column({ type: 'int' })
   userId: number;
 
-  @Column()
+  @Column({ type: 'int' })
   propertyId: number;
 
   @ManyToOne(() => User)
