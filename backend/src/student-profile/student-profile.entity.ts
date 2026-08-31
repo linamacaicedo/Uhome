@@ -1,25 +1,25 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class VibeAnalysis {
+export class StudentProfile {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  studentDensity: number;
+  university: string;
 
   @Column()
-  nightlife: number;
+  maxBudget: number;
 
   @Column()
-  studySpots: number;
+  distancePriority: string;
 
   @Column()
-  quietness: number;
+  safetyPriority: string;
 
   @Column()
-  essentialSpots: number;
+  nightlifePriority: string;
 
   @Column({ unique: true })
-  propertyId: number;
+  userId: number;
 }
