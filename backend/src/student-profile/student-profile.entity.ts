@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { User } from '../users/user.entity.js';
 
 @Entity()
 export class StudentProfile {
@@ -22,4 +30,8 @@ export class StudentProfile {
 
   @Column({ unique: true })
   userId: number;
+
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'userId' })
+  user: User;
 }

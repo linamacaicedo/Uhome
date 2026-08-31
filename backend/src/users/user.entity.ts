@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { StudentProfile } from '../student-profile/student-profile.entity.js';
 
 @Entity()
 export class User {
@@ -16,4 +23,7 @@ export class User {
 
   @Column()
   username: string;
+
+  @OneToOne(() => StudentProfile, (studentProfile) => studentProfile.user)
+  studentProfile: StudentProfile;
 }
