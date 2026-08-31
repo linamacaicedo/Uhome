@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { User } from '../users/user.entity.js';
+import type { User } from '../users/user.entity.js';
 
 @Entity()
 export class StudentProfile {
@@ -31,7 +31,7 @@ export class StudentProfile {
   @Column({ unique: true })
   userId: number;
 
-  @OneToOne(() => User)
-  @JoinColumn({ name: 'userId' })
-  user: User;
+@OneToOne('User', (user: User) => user.studentProfile)
+@JoinColumn({ name: 'userId' })
+user: User;
 }
