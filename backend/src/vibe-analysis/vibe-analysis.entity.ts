@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { Property } from '../properties/property.entity.js';
 
 @Entity()
 export class VibeAnalysis {
@@ -22,4 +30,8 @@ export class VibeAnalysis {
 
   @Column({ unique: true })
   propertyId: number;
+
+  @OneToOne(() => Property)
+  @JoinColumn({ name: 'propertyId' })
+  property: Property;
 }
