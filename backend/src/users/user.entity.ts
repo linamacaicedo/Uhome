@@ -1,11 +1,12 @@
 import {
   Column,
   Entity,
-  OneToOne,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { StudentProfile } from '../student-profile/student-profile.entity.js';
+import { Role } from '../roles/role.entity.js';
 
 @Entity()
 export class User {
@@ -24,6 +25,10 @@ export class User {
   @Column()
   username: string;
 
-  @OneToOne(() => StudentProfile, (studentProfile) => studentProfile.user)
-  studentProfile: StudentProfile;
+  @Column({ nullable: true })
+  roleId: number;
+
+  @ManyToOne(() => Role, { nullable: true })
+  @JoinColumn({ name: 'roleId' })
+  role: Role;
 }
