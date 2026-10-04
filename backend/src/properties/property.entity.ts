@@ -21,6 +21,12 @@ export class Property {
   @Column()
   address: string;
 
+  @Column({ type: 'double precision', nullable: true })
+  latitude: number;
+
+  @Column({ type: 'double precision', nullable: true })
+  longitude: number;
+
   @Column()
   price: number;
 
