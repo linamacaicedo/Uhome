@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Permission } from '../permissions/permission.entity.js';
 
 @Entity()
 export class Role {
@@ -10,4 +17,8 @@ export class Role {
 
   @Column()
   description: string;
+
+  @ManyToMany(() => Permission)
+  @JoinTable()
+  permissions: Permission[];
 }
