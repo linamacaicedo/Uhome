@@ -4,8 +4,8 @@ import {
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
-
 import { Property } from '../properties/property.entity.js';
 
 @Entity()
@@ -27,6 +27,12 @@ export class VibeAnalysis {
 
   @Column()
   essentialSpots: number;
+
+  @Column({ default: 'manual' })
+  source: string;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @Column({ unique: true })
   propertyId: number;
