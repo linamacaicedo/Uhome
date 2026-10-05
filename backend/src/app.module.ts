@@ -11,6 +11,7 @@ import { VibeAnalysisModule } from './vibe-analysis/vibe-analysis.module.js';
 import { RolesModule } from './roles/roles.module.js';
 import { PermissionsModule } from './permissions/permissions.module.js';
 import { FavoritesModule } from './favorites/favorites.module.js';
+import { PropertyTypesModule } from './property-types/property-types.module.js';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { FavoritesModule } from './favorites/favorites.module.js';
     RolesModule,
     PermissionsModule,
     FavoritesModule,
+    PropertyTypesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

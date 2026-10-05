@@ -1,11 +1,14 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Amenity } from '../amenities/amenity.entity.js';
+import { PropertyType } from '../property-types/property-type.entity.js';
 
 @Entity()
 export class Property {
@@ -30,8 +33,12 @@ export class Property {
   @Column()
   price: number;
 
-  @Column()
-  propertyType: string;
+  @Column({ nullable: true })
+  propertyTypeId: number;
+
+  @ManyToOne(() => PropertyType, { nullable: true })
+  @JoinColumn({ name: 'propertyTypeId' })
+  propertyType: PropertyType;
 
   @Column()
   distanceToCampus: number;
