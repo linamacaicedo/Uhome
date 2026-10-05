@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import type { User } from '../users/user.entity.js';
+import { User } from '../users/user.entity.js';
 
 @Entity()
 export class StudentProfile {
@@ -19,8 +19,8 @@ export class StudentProfile {
   @Column()
   maxBudget: number;
 
-  @Column()
-  distancePriority: string;
+  @Column({ default: 1000 })
+  maxDistanceToCampus: number;
 
   @Column()
   safetyPriority: string;
@@ -31,7 +31,7 @@ export class StudentProfile {
   @Column({ unique: true })
   userId: number;
 
-@OneToOne('User', (user: User) => user.studentProfile)
-@JoinColumn({ name: 'userId' })
-user: User;
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'userId' })
+  user: User;
 }
