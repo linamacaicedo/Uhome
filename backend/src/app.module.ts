@@ -10,6 +10,7 @@ import { ReviewsModule } from './reviews/reviews.module.js';
 import { VibeAnalysisModule } from './vibe-analysis/vibe-analysis.module.js';
 import { RolesModule } from './roles/roles.module.js';
 import { PermissionsModule } from './permissions/permissions.module.js';
+import { FavoritesModule } from './favorites/favorites.module.js';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { PermissionsModule } from './permissions/permissions.module.js';
     VibeAnalysisModule,
     RolesModule,
     PermissionsModule,
+    FavoritesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
